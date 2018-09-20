@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using MarcelloDB.Platform;
 
 namespace ExpenseTracker
 {
@@ -21,7 +22,26 @@ namespace ExpenseTracker
             submit_expense.Click += delegate 
             {
                 Expense expense = new Expense(float.Parse(amount.Text), payee.Text, tags.Text);
-                System.Console.WriteLine(expense);
+
+                // Get the platform object for the database
+                IPlatform platform = new MarcelloDB.netfx.Platform();
+
+                // Getting the Personal Special Folder. The database will go here.
+                var dataPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
+                // Creating a database session
+                var session = new MarcelloDB.Session(platform, dataPath);
+
+                // Getting a collections file. Each collection in the file is a database table
+                var expensesFile = session["expenses.dat"];
+
+                // Getting the expenses table and mapping how it will be given an ID (The expense time stamp)
+                var expensesColleciton = expensesFile.Collection<Expense, System.DateTime>("expenses", e => e.TimeStamp);
+
+                // Saving the expense to the database table
+                expensesColleciton.Persist(expense);
+                System.Console.WriteLine("Expense saved");
+
             };
         }
     }
