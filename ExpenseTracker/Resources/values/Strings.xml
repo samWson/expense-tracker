@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="amount">Amount</string>
+    <string name="payee">Payee</string>
+    <string name="tags">Tags</string>
+    <string name="submit_expense">Save Expense</string>
+</resources>
