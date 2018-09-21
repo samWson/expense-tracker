@@ -5,4 +5,5 @@
     <string name="payee">Payee</string>
     <string name="tags">Tags</string>
     <string name="submit_expense">Save Expense</string>
+    <string name="view_expenses">View Expenses</string>
 </resources>

@@ -27,4 +27,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/Submit"
         android:text="@string/submit_expense" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ViewExpenses"
+        android:text="@string/view_expenses" />
 </LinearLayout>

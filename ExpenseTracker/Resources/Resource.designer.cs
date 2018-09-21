@@ -56,6 +56,9 @@ namespace ExpenseTracker
 			// aapt resource value: 0x7f050002
 			public const int Tags = 2131034114;
 			
+			// aapt resource value: 0x7f050004
+			public const int ViewExpenses = 2131034116;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -70,7 +73,10 @@ namespace ExpenseTracker
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int AllExpenses = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
 			static Layout()
 			{
@@ -115,6 +121,9 @@ namespace ExpenseTracker
 			
 			// aapt resource value: 0x7f040003
 			public const int tags = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int view_expenses = 2130968581;
 			
 			static String()
 			{
