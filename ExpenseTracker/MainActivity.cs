@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using MarcelloDB.Platform;
 using Android.Content;
 using System.Collections.Generic;
 
@@ -22,32 +21,19 @@ namespace ExpenseTracker
             Button submitExpense = FindViewById<Button>(Resource.Id.Submit);
             Button viewExpenses = FindViewById<Button>(Resource.Id.ViewExpenses);
 
-            // Get the platform object for the database
-            IPlatform platform = new MarcelloDB.netfx.Platform();
-
-            // Getting the Personal Special Folder. The database will go here.
-            var dataPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-
-            // Creating a database session
-            var session = new MarcelloDB.Session(platform, dataPath);
-
-            // Getting a collections file. Each collection in the file is a database table
-            var expensesFile = session["expenses.dat"];
-
-            // Getting the expenses table and mapping how it will be given an ID (The expense time stamp)
-            var expensesColleciton = expensesFile.Collection<Expense, System.DateTime>("expenses", e => e.TimeStamp);
+            DBLayer dBLayer = new DBLayer();
 
             submitExpense.Click += delegate {
                 Expense expense = new Expense(float.Parse(amount.Text), payee.Text, tags.Text);
 
                 // Saving the expense to the database table
-                expensesColleciton.Persist(expense);
+                dBLayer.Save(expense);
             };
 
             viewExpenses.Click += delegate {
                 List<string> expenses = new List<string>();
 
-                foreach (Expense expense in expensesColleciton.All) {
+                foreach (Expense expense in dBLayer.All()) {
                     expenses.Add(expense.ToString());
                 }
 
