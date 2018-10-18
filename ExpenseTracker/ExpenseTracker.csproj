@@ -62,6 +62,7 @@
     <Compile Include="Expense.cs" />
     <Compile Include="AllExpensesActivity.cs" />
     <Compile Include="DBLayer.cs" />
+    <Compile Include="MetaData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

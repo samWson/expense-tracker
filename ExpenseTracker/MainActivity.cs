@@ -21,19 +21,19 @@ namespace ExpenseTracker
             Button submitExpense = FindViewById<Button>(Resource.Id.Submit);
             Button viewExpenses = FindViewById<Button>(Resource.Id.ViewExpenses);
 
-            DBLayer dBLayer = new DBLayer();
+            DBLayer dbLayer = new DBLayer();
 
             submitExpense.Click += delegate {
                 Expense expense = new Expense(float.Parse(amount.Text), payee.Text, tags.Text);
 
                 // Saving the expense to the database table
-                dBLayer.Save(expense);
+                dbLayer.Save(expense);
             };
 
             viewExpenses.Click += delegate {
                 List<string> expenses = new List<string>();
 
-                foreach (Expense expense in dBLayer.All()) {
+                foreach (Expense expense in dbLayer.All()) {
                     expenses.Add(expense.ToString());
                 }
 
